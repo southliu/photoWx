@@ -1,0 +1,20 @@
+/* conponents/title/title.wxss */
+.title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10rpx 0 20rpx;
+  }
+
+.title-en{
+  width: 100%;
+  font-size: 28rpx;
+  text-align: center;
+  padding: 13rpx 0;
+  border-bottom: 1px solid #777;
+}
+
+.title-cn{
+  font-size: 32rpx;
+  padding: 15rpx 0;
+}

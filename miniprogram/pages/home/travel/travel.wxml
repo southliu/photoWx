@@ -1,0 +1,10 @@
+<!--miniprogram/pages/home/travel/travel.wxml-->
+<common-nav></common-nav>
+
+<view class="travel">
+  <common-title title="{{title}}"></common-title>
+
+  <home-photos></home-photos>
+
+  <common-bottom></common-bottom>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/home/about/components/info/info.wxml-->
+  <div class="info-box">
+    <p class="info">{{info}}</p>
+    <p class="title">{{title1}}</p>
+    <p class="info">{{info1}}</p>
+    <p class="title">{{title2}}</p>
+    <p class="info">{{info2}}</p>
+    <p class="title">{{title3}}</p>
+    <p class="info">{{info3}}</p>
+  </div>

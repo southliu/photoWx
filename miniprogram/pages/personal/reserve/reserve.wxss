@@ -1,0 +1,95 @@
+/* miniprogram/pages/personal/reserve/reserve.wxss */
+.reserve {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 80rpx;
+  color: #676767;
+}
+
+.camera-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100rpx;
+}
+
+.camera {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  margin-bottom: 50rpx;
+}
+
+.icon {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 15rpx;
+}
+
+.info-key {
+  margin-right: 30rpx;
+}
+
+.picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  padding: 5rpx 35rpx 5rpx 20rpx;
+  border-radius: 26rpx;
+  color: #666;
+  background-color: #f4f4f4;
+}
+
+.arrow {
+  width: 16rpx;
+  height: 16rpx;
+  transform: rotate(90deg);
+  margin: 5rpx 10rpx 0 0;
+}
+
+.border-bottom {
+  padding-bottom: 50rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.info-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300rpx;
+  height: 20rpx;
+  font-size: 26rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #ececec;
+}
+
+.name {
+  letter-spacing: 8rpx
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240rpx;
+  height: 80rpx;
+  color: #fff;
+  margin: 70rpx 0 30rpx;
+  font-size: 28rpx;
+  background-color: #91c6af;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-active {
+  background-color: #5c8674;
+}

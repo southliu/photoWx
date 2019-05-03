@@ -1,0 +1,10 @@
+<!--miniprogram/pages/home/contact/contact.wxml-->
+<common-nav></common-nav>
+
+<view class="contact">
+  <common-title title="{{title}}"></common-title>
+
+  <contact-info></contact-info>
+
+  <common-bottom></common-bottom>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/personal/index/components/btns/btns.wxml-->
+<view class="btns">
+  <view class="item" wx:for="{{list}}" wx:key="{{index}}" data-name="{{item.name}}" bindtap="onIcon">
+    <view class="item-left">
+      <image class="icon" src="{{item.src}}" />
+      <text class="name">{{item.name}}</text>
+    </view>
+
+    <view class="item-right">
+      <image class="arrow" src="{{arrow}}" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<!--miniprogram/pages/home/article/article.wxml-->
+<common-nav></common-nav>
+
+<view class="article">
+  <common-title title="{{title}}"></common-title>
+
+  <article-photos src="{{src}}"></article-photos>
+
+  <common-bottom></common-bottom>
+</view>

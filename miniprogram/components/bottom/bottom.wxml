@@ -1,0 +1,15 @@
+<!--conponents/bottom/bottom.wxml-->
+<div class="bottom">
+    <button
+      class="call-phone"
+      hover-class="active"
+      bindtap="callPhone"
+    >{{phone}}</button>
+    <p class="en">{{en}}</p>
+    <p class="cn">{{cn}}</p>
+
+    <div class="brand">
+      <p class="brand-text">{{brandEn}}</p>
+      <p class="brand-text">{{brandCn}}</p>
+    </div>
+  </div>

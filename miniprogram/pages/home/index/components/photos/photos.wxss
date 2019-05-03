@@ -1,0 +1,52 @@
+/* pages/home/index/components/photos/photos.wxss */
+.float-left{
+  float: left;
+  margin-right: 1%;
+  }
+
+.float-right{
+  float: right;
+  margin-left: 1%;
+}
+
+.clearfix:after  { 
+  display:block; 
+  height: 0; 
+  clear : both; 
+  content: '' 
+}
+
+.float-right:after { 
+  display:block; 
+  height: 0; 
+  clear : both; 
+  content: '' 
+}
+
+.photos{
+  margin-bottom: 30rpx;
+  color: #777;
+  overflow:hidden;
+}
+
+.item{
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+}
+
+.item-img{
+  width: 320rpx;
+  height: 490rpx;
+}
+
+.cn{
+  font-size: 26rpx;
+  color: #000;
+  margin: 10rpx 0;
+}
+
+.en{
+  font-size: 18rpx;
+  margin-bottom: 15rpx;
+}

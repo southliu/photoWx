@@ -1,0 +1,17 @@
+/* pages/home/about/components/info/info.wxss */
+.info-box{
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 12rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.info{
+  margin-bottom: 25rpx;
+  line-height: 30rpx;
+}
+
+.title{
+  margin-bottom: 10rpx;
+}

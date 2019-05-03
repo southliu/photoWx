@@ -1,0 +1,41 @@
+/* conponents/bottom/bottom.wxss */
+.bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #999;
+}
+
+.call-phone{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400rpx;
+  height: 75rpx;
+  font-size: 28rpx;
+  background-color: #777;
+  margin-top: 50rpx;
+  border-radius: 34rpx;
+  color: #fff;
+  }
+
+.active {
+  background-color: #a5a5a5;
+}
+
+.en{
+  font-size: 28rpx;
+  margin-top: 6rpx;
+  }
+
+.cn{
+  font-size: 32rpx;
+  margin-top: 2rpx;
+  }
+
+.brand{
+    text-align: center;
+    font-size: 28rpx;
+    margin: 25rpx 0;
+    line-height: 30rpx;
+  }

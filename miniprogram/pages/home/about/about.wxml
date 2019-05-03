@@ -1,0 +1,10 @@
+<!--miniprogram/pages/home/about/about.wxml-->
+<common-nav></common-nav>
+
+<view class="about">
+  <common-title title="{{title}}"></common-title>
+
+  <about-info></about-info>
+
+  <common-bottom></common-bottom>
+</view>

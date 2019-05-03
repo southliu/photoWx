@@ -1,0 +1,10 @@
+<!--pages/home/article/components/photos/photos.wxml-->
+<div class="item">
+    <image class="item-img" src="{{src}}"/>
+    <image
+      class="item-img"
+      wx:for="{{picList}}"
+      wx:key="{{index}}"
+      src="{{item}}"
+    />
+  </div>

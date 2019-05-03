@@ -1,0 +1,35 @@
+/* pages/personal/index/components/btns/btns.wxss */
+.btns {
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+  padding-top: 160rpx;
+  margin-top: -200rpx;
+  background-color: #fff;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 50rpx;
+  color: #767676;
+  border-top: 1rpx solid #ececec;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.arrow {
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(270deg);
+}

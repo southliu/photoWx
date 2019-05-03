@@ -1,0 +1,30 @@
+<!--pages/home/index/components/photos/photos.wxml-->
+<div class="photos">
+    <div
+      class="item {{index%2===0?left:right}}"
+      wx:for="{{list}}"
+      wx:key="{{index}}"
+      data-index="{{index}}"
+      bindtap="onPic"
+      >
+      <image class="item-img" src="{{item.src}}"/>
+      <p class="cn">{{item.cn}}</p>
+      <p class="en">{{item.en}}</p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <common-title title="{{title}}"></common-title>
+
+    <div
+      class="item {{index%2===0?left:right}}"
+      wx:for="{{travel}}"
+      wx:key="{{index+5}}"
+      data-index="{{index+5}}"
+      bindtap="onPic"
+      >
+      <image class="item-img" src="{{item.src}}"/>
+      <p class="cn">{{item.cn}}</p>
+      <p class="en">{{item.en}}</p>
+    </div>
+  </div>

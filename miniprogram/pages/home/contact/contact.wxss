@@ -1,0 +1,6 @@
+/* miniprogram/pages/home/contact/contact.wxss */
+.contact {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 50rpx;
+}

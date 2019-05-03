@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#e6e1db",
+  "usingComponents": {
+    "personal-btns": "./components/btns/btns",
+    "personal-prompt": "./components/prompt/prompt"
+  }
+}

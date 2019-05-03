@@ -1,0 +1,13 @@
+<!--conponents/nav/nav.wxml-->
+<div class="nav">
+  <div
+    class="item"
+    wx:for="{{nav}}"
+    wx:key="{{index}}"
+    data-index="{{index}}"
+    bindtap="onNav"
+  >
+    <div class="cn">{{item.name}}</div>
+    <div class="en">{{item.title}}</div>
+  </div>
+</div>

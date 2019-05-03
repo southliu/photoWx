@@ -1,0 +1,14 @@
+<!--pages/personal/index/components/prompt/prompt.wxml-->
+<view class="prompt-box">
+  <view class="prompt">
+    <text class="title">{{title}}</text>
+    
+    <text class="info">{{server}}</text>
+    <text class="info">{{info}}</text>
+    <image class="auth" src="{{authImg}}" />
+
+    <button class="btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">{{btn}}</button>
+  </view>
+</view>
+
+<view class="cover"></view>

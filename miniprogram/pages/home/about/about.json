@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "关于我们",
+  "usingComponents": {
+    "common-nav": "../../../components/nav/nav",
+    "common-title": "../../../components/title/title",
+    "common-bottom": "../../../components/bottom/bottom",
+    "about-info": "./components/info/info"
+  }
+}

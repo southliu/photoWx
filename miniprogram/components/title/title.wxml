@@ -1,0 +1,5 @@
+<!--conponents/title/title.wxml-->
+<div class="title">
+  <div class="title-en">{{en}}</div>
+  <div class="title-cn">{{title}}</div>
+</div>

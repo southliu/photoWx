@@ -1,0 +1,10 @@
+<!--pages/home/contact/components/info/info.wxml-->
+<div class="info-box">
+  <p class="info">{{info}}</p>
+  <p class="info">{{info1}}</p>
+  <p class="info">{{info2}}</p>
+  <p class="info">{{info3}}</p>
+  <p class="info">{{info4}}</p>
+  <p class="info">{{info5}}</p>
+  <image class="img" src="{{src}}" />
+</div>

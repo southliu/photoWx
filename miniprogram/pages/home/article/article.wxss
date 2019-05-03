@@ -1,0 +1,6 @@
+/* miniprogram/pages/home/article/article.wxss */
+.article {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 50rpx;
+}

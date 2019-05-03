@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/home/index/index",
+    "pages/personal/index/index",
+    "pages/personal/order/order",
+    "pages/personal/reserve/reserve",
+    "pages/home/contact/contact",
+    "pages/home/about/about",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/home/travel/travel",
+    "pages/home/article/article"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "pages/home/index/index",
+        "text": "首页",
+        "iconPath": "images/icon/index-active.png",
+        "selectedIconPath": "images/icon/index.png"
+      },
+      {
+        "pagePath": "pages/personal/index/index",
+        "text": "个人",
+        "iconPath": "images/icon/personal-active.png",
+        "selectedIconPath": "images/icon/personal.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "cloud": true
+}

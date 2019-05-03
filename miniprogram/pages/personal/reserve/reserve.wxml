@@ -1,0 +1,61 @@
+<!--miniprogram/pages/personal/reserve/reserve.wxml-->
+<view class="reserve">
+  <view class="camera-box">
+    <image class="camera" src="{{camera}}" />
+    <text class="camera-text">{{title}}</text>
+  </view>
+  
+  <view class="info-box">
+    <image class="icon" src="{{selectIcon}}" />
+    <text class="info-key">{{selectKey}}</text>
+    <picker bindchange="pickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker" wx:if="{{!select}}">
+        <image class="arrow" src="{{arrowIcon}}" />
+        {{selectText}}
+      </view>
+
+      <view class="picker" wx:if="{{select}}">
+        <image class="arrow" src="{{arrowIcon}}" />
+        {{array[index]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="info-box border-bottom">
+    <image class="icon" src="{{dateIcon}}" />
+    <text class="info-key">{{dateKey}}</text>
+    <picker
+      mode="date"
+      value="{{date}}"
+      start="2015-09-01"
+      end="2099-09-01"
+      bindchange="bindDateChange"
+    >
+      <view class="picker" wx:if="{{!date}}">
+        <image class="arrow" src="{{arrowIcon}}" />
+        {{dateText}}
+      </view>
+
+      <view class="picker" wx:if="{{date}}">
+        <image class="arrow" src="{{arrowIcon}}" />
+        {{date}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="info-box">
+    <image class="icon" src="{{nameIcon}}" />
+    <text class="info-key name">{{nameKey}}</text>
+    <input class="info-input" placeholder="{{nameText}}" bindinput="getName" />
+  </view>
+
+  <view class="info-box">
+    <image class="icon" src="{{phoneIcon}}" />
+    <text class="info-key">{{phoneKey}}</text>
+    <input class="info-input" type="number" maxlength="11" placeholder="{{phoneText}}" bindinput="getPhone" />
+  </view>
+
+  <view class="btn-box">
+    <button class="btn" hover-class="btn-active" bindtap="onBtn">{{btn}}</button>
+  </view>
+</view>

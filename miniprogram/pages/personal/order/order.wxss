@@ -1,0 +1,76 @@
+/* miniprogram/pages/personal/order/order.wxss */
+page {
+  background-color: #f7f7f7;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  padding: 50rpx 0;
+  color: #676767;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-top: 2rpx solid #ececec;
+  border-bottom: 2rpx solid #ececec;
+  box-shadow: 0 10rpx 25rpx #ececec;
+  position: relative;
+}
+
+.order-item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.remove{  
+  width: 160rpx;  
+  height: 100%;  
+  background-color: red; 
+  color: white; 
+  position: absolute;  
+  top: 0;  
+  right: -160rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}  
+
+.camera-box {
+  display: flex;
+  align-items: center;
+}
+
+.camera {
+  width: 75rpx;
+  height: 75rpx;
+  margin: 0 30rpx 0 80rpx;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.client-box {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin-right: 30rpx;
+}
+
+.select {
+  margin-right: 10rpx;
+}

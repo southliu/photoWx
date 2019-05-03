@@ -1,0 +1,22 @@
+/* conponents/nav/nav.wxss */
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #777;
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 8rpx;
+  color: #fff;
+}
+.cn{
+  font-size: 26rpx;
+  margin-bottom: 6rpx;
+}
+.en{
+  font-size: 18rpx;
+}
