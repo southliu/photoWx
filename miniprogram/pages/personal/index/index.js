@@ -123,5 +123,12 @@ create(store, {
    */
   onShareAppMessage: function () {
 
+  },
+
+  // 点击获取授权
+  getAuth () {
+    this.setData({
+      isAuth: true
+    })
   }
 })
