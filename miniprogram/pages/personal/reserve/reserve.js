@@ -139,6 +139,7 @@ create(store, {
                 icon: 'success',
                 duration: 1500,
                 success () {
+                  // TODO 优化：随机码为时间戳
                   let rand = Math.floor(Math.random()*1000000+1)
                   let order = {
                     id: rand,

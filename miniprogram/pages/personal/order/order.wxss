@@ -15,22 +15,33 @@ page {
 .item {
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 20rpx 0;
-  margin-bottom: 20rpx;
+  width: 100vw;
   background-color: #fff;
   border-top: 2rpx solid #ececec;
   border-bottom: 2rpx solid #ececec;
-  box-shadow: 0 10rpx 25rpx #ececec;
   position: relative;
+  z-index: 999;
+}
+
+movable-area {
+  height: 120rpx;
+  width: calc(100vw - 160rpx);
+}
+
+movable-view {
+  height: 120rpx;
+  width: 100vw;
+  background: #fff;
+  z-index: 999;
 }
 
 .order-item {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 999;
 }
 
 .remove{  
@@ -40,7 +51,8 @@ page {
   color: white; 
   position: absolute;  
   top: 0;  
-  right: -160rpx;  
+  bottom: 0;
+  right: 0;  
   display: flex;  
   justify-content: center;  
   align-items: center;  

@@ -1,26 +1,35 @@
 <!--miniprogram/pages/personal/order/order.wxml-->
 <view class="order">
   <view class="item" wx:for="{{orderList}}" wx:key="{{index}}" wx:if="{{orderList.length>0}}" data-id="{{item.id}}" bindlongpress='onDel'>
-    <view data-index='{{index}}' class="order-item"  bindtouchstart="bindtouchstart" bindtouchmove="bindtouchmove" bindtouchend="bindtouchend" style="right:{{item.right}}rpx">
-      <view class="camera-box">
-        <image class="camera" src="{{camera}}" />
-      </view>
-
-      <view class="info-box">
-        <view class="client-box">
-          <text class="name">{{item.name}}</text>
-          <text class="phone">{{item.phone}}</text>
+    <movable-area>
+      <movable-view 
+        class="order-item"  
+        direction="horizontal"
+        inertia="true"
+        out-of-bounds="true"
+        x="{{item.xmove}}"
+        data-index='{{index}}'
+      >
+        <view class="camera-box">
+          <image class="camera" src="{{camera}}" />
         </view>
 
-        <view class="select-box">
-          <text class="select">{{item.select}}</text>
-          <text class="date">({{item.date}})</text>
-        </view>
-      </view>
-    </view>
+        <view class="info-box">
+          <view class="client-box">
+            <text class="name">{{item.name}}</text>
+            <text class="phone">{{item.phone}}</text>
+          </view>
 
-    <view class="remove" bindtap="delItem">{{del}} </view>
+          <view class="select-box">
+            <text class="select">{{item.select}}</text>
+            <text class="date">({{item.date}})</text>
+          </view>
+        </view>
+      </movable-view>
+    </movable-area>
+
+    <view class="remove" data-id="{{item.id}}" bindtap="delItem">{{del}} </view>
   </view>
 
-  <view class="" wx:if="{{orderList.length===0}}">{{not}}</view>
+  <view wx:if="{{orderList.length===0}}">{{not}}</view>
 </view>
