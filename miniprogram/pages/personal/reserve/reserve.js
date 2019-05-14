@@ -128,69 +128,81 @@ create(store, {
     let name = this.data.name
     let phone = this.data.phone
     let that = this
-    
-    if (select) {
-      if (date) {
-        if (name) {
-          if (phone) {
-            if ((/^1[345789]\d{9}$/.test(phone))) {
-              wx.showToast({
-                title: '预约成功',
-                icon: 'success',
-                duration: 1500,
-                success () {
-                  // TODO 优化：随机码为时间戳
-                  let rand = Math.floor(Math.random()*1000000+1)
-                  let order = {
-                    id: rand,
-                    select: select,
-                    date: date,
-                    name: name,
-                    phone: phone,
-                  }
-                  that.store.data.orderList.push(order)
-                  that.update()
-                  console.log('that.store.data.orderList:', that.store.data.orderList)
-                  setTimeout(() => {
-                    wx.switchTab({
-                      url: '../index/index'
-                    })
-                  }, 1000)
-                }
-              })
-            } else {
-              wx.showToast({
-                title: '手机号码有误',
-                icon: 'none',
-                duration: 1500
-              })
-            }
-          } else {
-            wx.showToast({
-              title: '请输入联系电话',
-              icon: 'none',
-              duration: 1500
-            })
-          }
-        } else {
-          wx.showToast({
-            title: '请输入姓名',
-            icon: 'none',
-            duration: 1500
-          })
-        }
-      } else {
-        wx.showToast({
-          title: '请选择拍摄时间',
-          icon: 'none',
-          duration: 1500
-        })
-      }
-    } else {
+
+    // 没有输入选择套餐
+    if (!select) {
       wx.showToast({
         title: '请选择预约套餐',
         icon: 'none',
         duration: 1500
+      })
+      return false
+    }
+
+    // 没有输入选择拍摄时间
+    if (!date) {
+      wx.showToast({
+        title: '请选择拍摄时间',
+        icon: 'none',
+        duration: 1500
+      })
+      return false
+    }
+
+    // 没有输入姓名
+    if (!name) {
+      wx.showToast({
+        title: '请输入姓名',
+        icon: 'none',
+        duration: 1500
+      })
+      return false
+    }
+
+    // 没有输入联系电话
+    if (!phone) {
+      wx.showToast({
+        title: '请输入联系电话',
+        icon: 'none',
+        duration: 1500
+      })
+      return false
+    }
+
+    // 判断手机格式是否正确
+    if (!(/^1[345789]\d{9}$/.test(phone))) {
+      console.log(2)
+      wx.showToast({
+        title: '手机号码有误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false
+    } else {
+      console.log(3)
+      wx.showToast({
+        title: '预约成功',
+        icon: 'success',
+        duration: 1500,
+        success () {
+          // TODO 优化：随机码为时间戳
+          let rand = Math.floor(Math.random()*1000000+1)
+          let order = {
+            id: rand,
+            select: select,
+            date: date,
+            name: name,
+            phone: phone,
+          }
+          that.store.data.orderList.push(order)
+          that.update()
+          console.log('that.store.data.orderList:', that.store.data.orderList)
+          setTimeout(() => {
+            wx.switchTab({
+              url: '../index/index'
+            })
+          }, 1000)
+        }
       })
     }
   }
