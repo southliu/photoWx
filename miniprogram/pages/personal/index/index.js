@@ -1,6 +1,7 @@
 // miniprogram/pages/personal/index/index.js
 import store from '../../../store/store'
 import create from '../../../utils/weStore/create'
+const db = wx.cloud.database()
 
 create(store, {
 
@@ -130,5 +131,22 @@ create(store, {
     this.setData({
       isAuth: true
     })
+  },
+
+  // 插入数据
+  insert: function () {
+    db.collection('users').add({
+      data: {
+        name: 'south'
+      },
+      success(res) {
+        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+        console.log(res)
+      },
+      fail (err) {
+        console.log(err)
+      }
+    })
+    
   }
 })
