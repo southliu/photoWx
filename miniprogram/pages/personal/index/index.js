@@ -17,23 +17,49 @@ create(store, {
     userName: '',
   },
 
+  // 数据库插入用户数据
+  insert: function (name, avatar) {
+    db.collection('users').add({
+      data: {
+        "name": name,
+        "avatar": avatar
+      }
+    }).then(res => {
+      console.log('insert success:', res)
+    }).catch(err => {
+      console.log('insert err:', err)
+    })
+  },
+
+  // 用户授权
+  getUserAuth: function () {
+    let that = this
+    wx.getUserInfo({
+      success(res) {
+        let neme = res.userInfo.nickName
+        let avatar = res.userInfo.avatarUrl
+
+        that.store.data.userName = neme
+        that.store.data.userHead = avatar
+        that.update()
+
+        // 输入数据库
+        // that.insert(neme, avatar)
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this
-     // 查看是否授权
-     wx.getSetting({
+    // 查看是否授权
+    wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success(res) {
-              that.store.data.userHead = res.userInfo.avatarUrl
-              that.store.data.userName = res.userInfo.nickName
-              that.update()
-            }
-          })
+          that.getUserAuth()
         } else {
           that.setData({
             isAuth: true
@@ -42,27 +68,22 @@ create(store, {
       }
     })
   },
+
+  // 手动授权用户数据
   bindGetUserInfo(e) {
-    let that = this
-    console.log('bindGetUserInfo:',e)
     this.setData({
       isAuth: false
     })
 
-    wx.getUserInfo({
-      success(res) {
-        that.store.data.userHead = res.userInfo.avatarUrl
-        that.store.data.userName = res.userInfo.nickName
-        that.update()
-      }
-    })
+    this.getUserAuth()
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -70,19 +91,10 @@ create(store, {
    */
   onShow: function () {
     let that = this
-     // 查看是否授权
-     wx.getSetting({
+    // 查看是否授权
+    wx.getSetting({
       success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success(res) {
-              that.store.data.userHead = res.userInfo.avatarUrl
-              that.store.data.userName = res.userInfo.nickName
-              that.update()
-            }
-          })
-        } else {
+        if (!res.authSetting['scope.userInfo']) {
           that.setData({
             isAuth: true
           })
@@ -127,26 +139,9 @@ create(store, {
   },
 
   // 点击获取授权
-  getAuth () {
+  getAuth() {
     this.setData({
       isAuth: true
     })
   },
-
-  // 插入数据
-  insert: function () {
-    db.collection('users').add({
-      data: {
-        name: 'south'
-      },
-      success(res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
-      },
-      fail (err) {
-        console.log(err)
-      }
-    })
-    
-  }
 })
