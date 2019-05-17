@@ -10,6 +10,25 @@ App({
       })
     }
 
+    // 查看是否有open ID的缓存
+    wx.getStorage({
+      key: 'openId',
+      fail(err) {
+        console.log('not openId')
+        
+        // 调用云函数login获取openId
+        wx.cloud.callFunction({
+          name: 'login'
+        }).then(res => {
+          wx.setStorageSync('openId', res.result.event.userInfo.openId)
+        }).catch(err => {
+          console.log('login err:', err)
+        })
+      }
+    })
+
+    
+
     this.globalData = {}
   }
 })

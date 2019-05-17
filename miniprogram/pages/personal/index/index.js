@@ -17,8 +17,40 @@ create(store, {
     userName: '',
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let that = this
+
+    this.getUserData().then(res=> {
+      // res.data 包含该记录的数据
+      console.log(res.data)
+      that.store.data.userName = res.data[0].name
+      that.store.data.userHead = res.data[0].avatar
+      that.update()
+    })
+    .catch (err => {
+      console.log('err:', err)
+      // 查看是否授权
+      wx.getSetting({
+        success(res) {
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            that.getUserAuth()
+          } else {
+            that.setData({
+              isAuth: true
+            })
+          }
+        }
+      })
+    })
+    
+  },
+
   // 数据库插入用户数据
-  insert: function (name, avatar) {
+  insert (name, avatar) {
     db.collection('users').add({
       data: {
         "name": name,
@@ -31,40 +63,26 @@ create(store, {
     })
   },
 
+  // 查询数据库是否有用户信息
+  getUserData () {
+    const openId = wx.getStorageSync('openId')
+    return db.collection('users').where({_openid: openId}).get()
+  },
+
   // 用户授权
   getUserAuth: function () {
     let that = this
     wx.getUserInfo({
       success(res) {
-        let neme = res.userInfo.nickName
+        let name = res.userInfo.nickName
         let avatar = res.userInfo.avatarUrl
 
-        that.store.data.userName = neme
+        that.store.data.userName = name
         that.store.data.userHead = avatar
         that.update()
 
         // 输入数据库
-        // that.insert(neme, avatar)
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    let that = this
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          that.getUserAuth()
-        } else {
-          that.setData({
-            isAuth: true
-          })
-        }
+        that.insert(name, avatar)
       }
     })
   },
@@ -83,7 +101,7 @@ create(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
