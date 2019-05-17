@@ -1,6 +1,7 @@
 // miniprogram/pages/personal/order/order.js
 import store from '../../../store/store'
 import create from '../../../utils/weStore/create'
+const db = wx.cloud.database()
 
 create(store, {
 
@@ -26,7 +27,38 @@ create(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.searchOrders()
+    console.log('this.data.orderList:', this.data.orderList)
   },
+
+  // 查询orders数据库
+  searchOrders () {
+    const openId = wx.getStorageSync('openId')
+    wx.showLoading({
+      title: '加载中',
+    })
+
+    db.collection('orders').where({_openid: openId}).get()
+    .then(res => {
+      console.log('orders suc:', res.data)
+
+      wx.hideLoading()
+      this.setData({
+        orderList: res.data
+      })
+    })
+    .catch(err => {
+      console.log('orders err:', err)
+
+      wx.hideLoading()
+      wx.showToast({
+        title: '服务器错误',
+        icon: 'none',
+        duration: 2000
+      })
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面显示
@@ -118,39 +150,53 @@ create(store, {
   del:function(e) {
     let id = e.currentTarget.dataset.id
     let that = this
-    
+
+    // 是否选择模态框
     wx.showModal({
       title: '提示',
-      content: '您确定要删除当前数据吗？',
+      content: '您确定删除当前数据吗？',
       success(res) {
         if (res.confirm) {
-          let arr = []
-          that.store.data.orderList.forEach(e => {
-            if (e.id !== id) {
-              arr.push(e)
-            }
+          wx.showLoading({
+            title: '加载中',
           })
-          that.store.data.orderList = arr
-          that.update()
-          console.log('that.store.data.orderList:', that.store.data.orderList)
-          console.log('arr:', arr)
 
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success',
-            duration: 1500
+          // 数据库删除当前数据
+          db.collection('orders').doc(id).remove()
+          .then(res => {
+            console.log('del suc:', res)
+            wx.hideLoading()
+
+            wx.showToast({
+              title: '删除成功',
+              icon: 'success',
+              duration: 1500,
+              success (res) {
+                const pages = getCurrentPages()
+                const perpage = pages[pages.length - 1]
+                perpage.onLoad()  
+              }
+            })
           })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+          .catch(err => {
+            console.log('del err:', err)
+            wx.hideLoading()
+
+            wx.showToast({
+              title: '服务器错误',
+              icon: 'none',
+              duration: 1500
+            })
+          })
         }
       }
     })
   },
+
   // 滑动删除
   delItem (e) {
     this.del(e)
   },
-
 
   // 删除
   onDel (e) {

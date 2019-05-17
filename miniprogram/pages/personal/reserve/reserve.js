@@ -1,6 +1,7 @@
 // miniprogram/pages/personal/reserve/reserve.js
 import store from '../../../store/store'
 import create from '../../../utils/weStore/create'
+const db = wx.cloud.database()
 
 create(store, {
 
@@ -121,6 +122,45 @@ create(store, {
     })
   },
 
+  // 数据库插入用户数据
+  insert (select, date, name, phone) {
+    wx.showLoading({
+      title: '加载中',
+    })
+
+    db.collection('orders').add({
+      data: {
+        "select": select,
+        "date": date,
+        "name": name,
+        "phone": phone
+      }
+    }).then(res => {
+      // console.log('insert success:', res)
+      wx.hideLoading()
+      wx.showToast({
+        title: '预约成功',
+        icon: 'success',
+        duration: 1500
+      })
+
+      setTimeout(() => {
+        wx.switchTab({
+          url: '../index/index'
+        })
+      }, 1000)
+    }).catch(err => {
+      console.log('insert err:', err)
+
+      wx.hideLoading()
+      wx.showToast({
+        title: '服务器错误',
+        icon: 'none',
+        duration: 2000
+      })
+    })
+  },
+
   // 点击预约
   onBtn () {
     let select = this.data.select
@@ -179,31 +219,8 @@ create(store, {
       })
       return false
     } else {
-      console.log(3)
-      wx.showToast({
-        title: '预约成功',
-        icon: 'success',
-        duration: 1500,
-        success () {
-          // TODO 优化：随机码为时间戳
-          let rand = Math.floor(Math.random()*1000000+1)
-          let order = {
-            id: rand,
-            select: select,
-            date: date,
-            name: name,
-            phone: phone,
-          }
-          that.store.data.orderList.push(order)
-          that.update()
-          console.log('that.store.data.orderList:', that.store.data.orderList)
-          setTimeout(() => {
-            wx.switchTab({
-              url: '../index/index'
-            })
-          }, 1000)
-        }
-      })
+      // 插入数据库
+      that.insert(select, date, name, phone)
     }
   }
 })

@@ -28,7 +28,7 @@
       </movable-view>
     </movable-area>
 
-    <view class="remove" data-id="{{item.id}}" bindtap="delItem">{{del}} </view>
+    <view class="remove" data-id="{{item._id}}" bindtap="delItem">{{del}} </view>
   </view>
 
   <view wx:if="{{orderList.length===0}}">{{not}}</view>

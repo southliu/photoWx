@@ -25,13 +25,13 @@ create(store, {
 
     this.getUserData().then(res=> {
       // res.data 包含该记录的数据
-      console.log(res.data)
+      // console.log('getUserData:', res.data)
       that.store.data.userName = res.data[0].name
       that.store.data.userHead = res.data[0].avatar
       that.update()
     })
     .catch (err => {
-      console.log('err:', err)
+      console.log('getUserData err:', err)
       // 查看是否授权
       wx.getSetting({
         success(res) {
@@ -156,10 +156,4 @@ create(store, {
 
   },
 
-  // 点击获取授权
-  getAuth() {
-    this.setData({
-      isAuth: true
-    })
-  },
 })
