@@ -21,11 +21,72 @@ create(store, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getUserInfo()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getUserInfo()
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+
+  // 判断数据库是否存在用户值
+  getUserInfo () {
     let that = this
+
+    wx.showLoading({
+      title: '加载中',
+    })
 
     this.getUserData().then(res=> {
       // res.data 包含该记录的数据
       // console.log('getUserData:', res.data)
+      wx.hideLoading()
+      
       that.store.data.userName = res.data[0].name
       that.store.data.userHead = res.data[0].avatar
       that.update()
@@ -37,8 +98,10 @@ create(store, {
         success(res) {
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            wx.hideLoading()
             that.getUserAuth()
           } else {
+            wx.hideLoading()
             that.setData({
               isAuth: true
             })
@@ -46,7 +109,6 @@ create(store, {
         }
       })
     })
-    
   },
 
   // 数据库插入用户数据
@@ -94,66 +156,5 @@ create(store, {
     })
 
     this.getUserAuth()
-  },
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    let that = this
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          that.setData({
-            isAuth: true
-          })
-        }
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
+  }
 })
