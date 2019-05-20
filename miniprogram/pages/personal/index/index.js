@@ -22,81 +22,22 @@ create(store, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-
-    // 获取用户缓存
-    const userInfo = wx.getStorageSync('userInfo')
-
-    if (userInfo) {
-      this.setData ({
-        userHead: userInfo.avatar,
-        userName: userInfo.name
-      })
-    } else {
-      wx.showLoading({
-        title: '加载中',
-      })
-
-      // 获取openId
-      const openId = wx.getStorageSync('openId')
-
-      // 数据库查询是否存在用户信息
-      db.collection('users').where({_openid: openId}).get()
-      .then(res => {
-        console.log('find users:', res)
-        wx.hideLoading()
-
-        // 查看数据库是否有值
-        if (res.length > 0) {
-          that.setData({
-            userHead: res.data.avatar,
-            userName: res.data.name
-          })
-        } else {
-          // 查看是否授权
-          wx.getSetting({
-            success(res) {
-              if (!res.authSetting['scope.userInfo']) {
-                that.setData({
-                  isAuth: true
-                })
-              }
-            }
-          })
-        }
-        
-      })
-      .catch(err => {
-        console.log('find users err:', err)
-        wx.hideLoading()
-
-        wx.showToast({
-          title: '服务器错误',
-          icon: 'none',
-          duration: 2000
-        })
-      })
-    }
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 查看是否获取用户值
-    const userInfo = wx.getStorageSync('userInfo')
-    if (!userInfo) {
-      this.setData({
-        isAuth: true
-      })
-    }
+    // 获取用户信息
+    this.getUserInfo()
   },
 
   /**
@@ -134,6 +75,77 @@ create(store, {
 
   },
 
+  // 获取用户信息
+  getUserInfo () {
+    let that = this
+
+    // 查看是否获取用户值
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      this.setData({
+        userHead: userInfo.avatar,
+        userName: userInfo.name
+      })
+    } else {
+      wx.showLoading({
+        title: '加载中',
+      })
+
+      // 获取openId
+      const openId = wx.getStorageSync('openId')
+
+      // 数据库查询是否存在用户信息
+      db.collection('users').where({_openid: openId}).get()
+      .then(res => {
+        console.log('find users:', res)
+        wx.hideLoading()
+
+        // 查看数据库是否有值
+        if (res.data.length > 0) {
+          let name = res.data[0].name
+          let avatar = res.data[0].avatar
+
+          let userInfo = {
+            'name': name,
+            'avatar': avatar
+          }
+      
+          // 用户信息保存缓存
+          wx.setStorage({
+            key: 'userInfo',
+            data: userInfo
+          })
+
+          that.setData({
+            userHead: avatar,
+            userName: name
+          })
+        } else {
+          // 查看是否授权
+          wx.getSetting({
+            success(res) {
+              if (!res.authSetting['scope.userInfo']) {
+                that.setData({
+                  isAuth: true
+                })
+              }
+            }
+          })
+        }
+        
+      })
+      .catch(err => {
+        console.log('find users err:', err)
+        wx.hideLoading()
+
+        wx.showToast({
+          title: '服务器错误',
+          icon: 'none',
+          duration: 2000
+        })
+      })
+    }
+  },
 
   // 数据库插入用户数据
   insert(name, avatar) {
