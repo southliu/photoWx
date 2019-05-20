@@ -1,7 +1,7 @@
 // miniprogram/pages/personal/reserve/reserve.js
 import store from '../../../store/store'
 import create from '../../../utils/weStore/create'
-const db = wx.cloud.database()
+let today = getApp().getToday()
 
 create(store, {
 
@@ -124,16 +124,19 @@ create(store, {
 
   // 数据库插入用户数据
   insert (select, date, name, phone) {
+  
     wx.showLoading({
       title: '加载中',
     })
 
-    db.collection('orders').add({
+    wx.cloud.callFunction({
+      name: 'addOrder',
       data: {
         "select": select,
         "date": date,
         "name": name,
-        "phone": phone
+        "phone": phone,
+        "creatDate": today
       }
     }).then(res => {
       // console.log('insert success:', res)

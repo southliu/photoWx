@@ -1,9 +1,5 @@
 export default {
   data: {
-    // 用户数据
-    userHead: '',
-    userName: '',
-
     orderList: []
   },
   globalData: ['globalPropTest', 'ccc.ddd'],
