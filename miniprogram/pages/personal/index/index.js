@@ -167,6 +167,7 @@ create(store, {
         "name": name,
         "avatar": avatar,
         "realName": name,
+        "phone": '',
         "date": today
       }
     }).then(res => {
@@ -207,5 +208,14 @@ create(store, {
     })
 
     this.getUserAuth()
+  },
+
+  // 编辑用户
+  editUser () {
+    const openId = wx.getStorageSync('openId')
+
+    wx.navigateTo({
+      url: '../edit/edit?id='+openId
+    })
   }
 })

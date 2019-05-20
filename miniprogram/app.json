@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/index/index",
     "pages/personal/index/index",
+    "pages/personal/edit/edit",
     "pages/personal/order/order",
     "pages/personal/reserve/reserve",
     "pages/home/contact/contact",

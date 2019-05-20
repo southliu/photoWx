@@ -1,0 +1,46 @@
+/* pages/personal/edit/edit.wxss */
+page {
+  background-color: #f0eff4;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0eff4;
+}
+
+.item-box {
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+}
+
+.title {
+  color: #6a696d;
+  margin: 20rpx 0 10rpx 30rpx;
+}
+
+.item-input {
+  padding: 10rpx 30rpx;
+  background-color: #fff;
+}
+
+.btn-box {
+  padding: 0 30rpx;
+  margin-top: 50rpx;
+}
+
+.btn {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+
+.btn-save {
+  color: #fff;
+  background-color: #00a8f3;
+}
+
+.btn-cancel {
+  color: #000;
+  background-color: #fff;
+}

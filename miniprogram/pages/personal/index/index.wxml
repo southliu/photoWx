@@ -2,11 +2,11 @@
 <view class="index">
   <view class="head-box">
     <image class="head" src="{{headImg}}" wx:if="{{!userHead}}"  bindtap="getAuth"/>
-    <image class="head" src="{{userHead}}" wx:if="{{userHead}}" />
+    <image class="head" src="{{userHead}}" wx:if="{{userHead}}" bindtap="editUser" />
   </view>
 
   <text class="user-name" wx:if="{{!userName}}" bindtap="getAuth">{{names}}</text>
-  <text class="user-name" wx:if="{{userName}}">{{userName}}</text>
+  <text class="user-name" wx:if="{{userName}}" bindtap="editUser" >{{userName}}</text>
 </view>
 
 <personal-btns></personal-btns>

@@ -1,0 +1,23 @@
+<!--pages/personal/edit/edit.wxml-->
+<view class="edit">
+  <view class="item-box">
+    <text class="title">{{avatarText}}</text>
+    <input class="item-input" type="text" />
+  </view>
+
+  <view class="item-box">
+    <text class="title">{{nameText}}</text>
+    <input class="item-input" type="text" value="{{name}}"/>
+  </view>
+
+  <view class="item-box">
+    <text class="title">{{phoneText}}</text>
+    <input class="item-input" type="text" value="{{phone}}"/>
+  </view>
+
+  <view class="btn-box">
+    <button class="btn btn-save" bindtap="onSave">{{onSave}}</button>
+    <button class="btn btn-cancel" bindtap="onCancel">{{onCancel}}</button>
+  </view>
+  
+</view>
