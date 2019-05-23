@@ -7,12 +7,17 @@
 
   <view class="item-box">
     <text class="title">{{nameText}}</text>
-    <input class="item-input" type="text" value="{{name}}"/>
+    <input class="item-input" type="text" placeholder="{{input}}{{nameText}}" bindinput="enterName" value="{{name}}"/>
   </view>
 
   <view class="item-box">
     <text class="title">{{phoneText}}</text>
-    <input class="item-input" type="text" value="{{phone}}"/>
+    <input class="item-input" maxlength="11" type="number" placeholder="{{input}}{{phoneText}}" bindinput="enterPhone" value="{{phone}}"/>
+  </view>
+
+  <view class="item-box">
+    <text class="title">{{emailText}}</text>
+    <input class="item-input" type="text" placeholder="{{input}}{{emailText}}" bindinput="enterEmail" value="{{email}}"/>
   </view>
 
   <view class="btn-box">

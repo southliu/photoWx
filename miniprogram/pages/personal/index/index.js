@@ -121,15 +121,8 @@ create(store, {
             userName: name
           })
         } else {
-          // 查看是否授权
-          wx.getSetting({
-            success(res) {
-              if (!res.authSetting['scope.userInfo']) {
-                that.setData({
-                  isAuth: true
-                })
-              }
-            }
+          that.setData({
+            isAuth: true
           })
         }
         
@@ -149,7 +142,6 @@ create(store, {
 
   // 数据库插入用户数据
   insert(name, avatar) {
-
     let userInfo = {
       'name': name,
       'avatar': avatar
@@ -168,7 +160,9 @@ create(store, {
         "avatar": avatar,
         "realName": name,
         "phone": '',
-        "date": today
+        "email": '',
+        "date": today,
+        "update": today
       }
     }).then(res => {
       console.log('insert success:', res)
@@ -182,9 +176,15 @@ create(store, {
     })
   },
 
-  // 用户授权
-  getUserAuth: function () {
+  // 手动授权用户数据
+  bindGetUserInfo(e) {
+    console.log(e)
     let that = this
+
+    this.setData({
+      isAuth: false
+    })
+
     wx.getUserInfo({
       success(res) {
         let name = res.userInfo.nickName
@@ -199,15 +199,6 @@ create(store, {
         that.insert(name, avatar)
       }
     })
-  },
-
-  // 手动授权用户数据
-  bindGetUserInfo(e) {
-    this.setData({
-      isAuth: false
-    })
-
-    this.getUserAuth()
   },
 
   // 编辑用户

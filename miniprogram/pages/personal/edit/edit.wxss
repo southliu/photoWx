@@ -21,7 +21,7 @@ page {
 }
 
 .item-input {
-  padding: 10rpx 30rpx;
+  padding: 15rpx 30rpx;
   background-color: #fff;
 }
 

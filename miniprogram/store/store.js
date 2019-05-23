@@ -1,6 +1,9 @@
 export default {
   data: {
-    orderList: []
+    orderList: [],
+
+    // 用户信息
+    users: [],
   },
   globalData: ['globalPropTest', 'ccc.ddd'],
   logMotto: function () {

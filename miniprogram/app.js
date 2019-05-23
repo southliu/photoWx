@@ -32,33 +32,34 @@ App({
 
   // 获取今日时间
   getToday() {
-    var now = new Date();
+    let now = new Date();
 
-    var year = now.getFullYear();       //年
-    var month = now.getMonth() + 1;     //月
-    var day = now.getDate();            //日
+    let year = now.getFullYear() //年
+    let month = now.getMonth() + 1 //月
+    let day = now.getDate() //日
 
-    var hh = now.getHours();            //时
-    var mm = now.getMinutes();          //分
+    let hh = now.getHours() //时
+    let mm = now.getMinutes() //分
+    let ss = now.getSeconds() //毫秒 
 
-    var clock = year + "-";
+    let clock = year + "-"
 
     if (month < 10)
-      clock += "0";
+      clock += "0"
 
-    clock += month + "-";
+    clock += month + "-"
 
     if (day < 10)
-      clock += "0";
+      clock += "0"
 
-    clock += day + " ";
+    clock += day + " "
 
     if (hh < 10)
-      clock += "0";
+      clock += "0"
 
-    clock += hh + ":";
-    if (mm < 10) clock += '0';
-    clock += mm;
-    return clock;
+    clock += hh + ":"
+    if (mm < 10) clock += '0'
+    clock += mm + ':' + ss
+    return clock
   }
 })
