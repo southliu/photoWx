@@ -27,8 +27,11 @@ create(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.searchOrders()
-    console.log('this.data.orderList:', this.data.orderList)
+    let orderList = this.store.data.orderList
+    
+    if (orderList.length === 0) {
+      this.searchOrders()
+    }
   },
 
   // 查询orders数据库
@@ -43,9 +46,8 @@ create(store, {
       console.log('orders suc:', res.data)
 
       wx.hideLoading()
-      this.setData({
-        orderList: res.data
-      })
+      this.store.data.orderList = res.data
+      this.update()
     })
     .catch(err => {
       console.log('orders err:', err)
