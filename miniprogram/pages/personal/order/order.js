@@ -27,15 +27,15 @@ create(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let orderList = this.store.data.orderList
+    const orderList = this.store.data.orderList
     
     if (orderList.length === 0) {
-      this.searchOrders()
+      this.listOrders()
     }
   },
 
   // 查询orders数据库
-  searchOrders () {
+  listOrders () {
     const openId = wx.getStorageSync('openId')
     wx.showLoading({
       title: '加载中',
@@ -169,6 +169,16 @@ create(store, {
             console.log('del suc:', res)
             wx.hideLoading()
 
+            // TODO: BUG删除数据刷新问题
+            // 清除对应的数据
+            // let newOrderList = []
+            // this.data.orderList.forEach(e => {
+            //   if (e.id !== id) {
+            //     newOrderList.push(e)
+            //   }
+            // })
+            // this.data.orderList = newOrderList
+
             wx.showToast({
               title: '删除成功',
               icon: 'success',
@@ -176,7 +186,7 @@ create(store, {
               success (res) {
                 const pages = getCurrentPages()
                 const perpage = pages[pages.length - 1]
-                perpage.onLoad()  
+                perpage.onLoad()
               }
             })
           })
