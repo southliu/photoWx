@@ -1,7 +1,5 @@
 export default {
   data: {
-    orderList: [],
-
     // 用户信息
     users: [],
   },

@@ -1,10 +1,8 @@
 // miniprogram/pages/personal/reserve/reserve.js
-import store from '../../../store/store'
-import create from '../../../utils/weStore/create'
 const db = wx.cloud.database()
 let today = getApp().getToday()
 
-create(store, {
+Page({
 
   /**
    * 页面的初始数据
