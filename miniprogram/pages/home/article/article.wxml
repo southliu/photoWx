@@ -4,7 +4,15 @@
 <view class="article">
   <common-title title="{{title}}"></common-title>
 
-  <article-photos src="{{src}}"></article-photos>
+  <div class="item">
+    <image
+      class="item-img"
+      wx:for="{{picList}}"
+      wx:key="{{index}}"
+      mode="aspectFill"
+      src="{{item}}"
+    />
+  </div>
 
   <common-bottom></common-bottom>
 </view>

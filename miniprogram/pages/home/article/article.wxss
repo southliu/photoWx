@@ -4,3 +4,15 @@
   flex-direction: column;
   padding: 30rpx 50rpx;
 }
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-img{
+  width: 650rpx;
+  height: 998rpx;
+  margin: 10rpx 0;
+}

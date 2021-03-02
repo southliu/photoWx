@@ -7,68 +7,8 @@ Page({
   data: {
     title: '图片详情',
     src: '',
-    list: [
-      {
-        cn: '极致简约系列',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201901/201901241548306694.jpg'
-      }, {
-        cn: '极致简约系列',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201901/201901241548305666.jpg'
-      }, {
-        cn: '极致时尚系列',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201901/201901241548305061.jpg'
-      }, {
-        cn: '极致肖像婚纱照',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201901/201901161547639627.jpg'
-      }
-    ],
-    travel: [
-      {
-        cn: '马尔代夫velassaru',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201807/201807231532333141.jpg'
-      }, {
-        cn: '永远是个密密&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471874564.jpg'
-      }, {
-        cn: '文海&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471874250.jpg'
-      }, {
-        cn: '花之恋&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471873341.jpg'
-      }, {
-        cn: '拉市海&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471873036.jpg'
-      }, {
-        cn: '康定情歌&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471872317.jpg'
-      }, {
-        cn: '唯有夏花浓&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471870288.jpg'
-      }, {
-        cn: '斑马&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471869964.jpg'
-      }, {
-        cn: '我和你&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608221471865150.jpg'
-      }, {
-        cn: '爱情巴士&WEDDING',
-        en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: 'http://www.lvtu-vision.com/upload/201608/201608141471167547.jpg'
-      }
-    ]
+    list: [],
+    picList: []
   },
 
   /**
@@ -76,31 +16,39 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    let type = options.type
-    let id = options.id
+    
+    const list = wx.getStorageSync('list');
+    list.picList.unshift(list.src);
+    this.setData({
+      list,
+      picList:list.picList
+    })
+    console.log('list.src:', list.src)
+    console.log('list.picList:', list.picList)
+    // let type = options.type
+    // let id = options.id
+    // if (type == 'home') {
+    //   console.log('home')
+    //   if (id > 4) {
+    //     let index = id - 5
+    //     this.setData({
+    //       title: this.data.travel[index].cn,
+    //       src: this.data.travel[index].src
+    //     })
+    //   } else {
+    //     this.setData({
+    //       title: this.data.list[id].cn,
+    //       src: this.data.list[id].src
+    //     })
+    //   }
+    // }
 
-    if (type == 'home') {
-      console.log('home')
-      if (id > 4) {
-        let index = id - 5
-        this.setData({
-          title: this.data.travel[index].cn,
-          src: this.data.travel[index].src
-        })
-      } else {
-        this.setData({
-          title: this.data.list[id].cn,
-          src: this.data.list[id].src
-        })
-      }
-    }
-
-    if (type == 'travel') {
-      this.setData({
-        title: this.data.travel[id].cn,
-        src: this.data.travel[id].src
-      })
-    }
+    // if (type == 'travel') {
+    //   this.setData({
+    //     title: this.data.travel[id].cn,
+    //     src: this.data.travel[id].src
+    //   })
+    // }
   },
 
   /**

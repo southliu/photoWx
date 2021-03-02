@@ -5,9 +5,10 @@
       wx:for="{{list}}"
       wx:key="{{index}}"
       data-index="{{index}}"
+      data-values="{{item}}"
       bindtap="onPic"
       >
-      <image class="item-img" src="{{item.src}}"/>
+      <image class="item-img" mode="aspectFill" src="{{item.src}}"/>
       <p class="cn">{{item.cn}}</p>
       <p class="en">{{item.en}}</p>
     </div>
@@ -21,9 +22,10 @@
       wx:for="{{travel}}"
       wx:key="{{index+5}}"
       data-index="{{index+5}}"
+      data-values="{{item}}"
       bindtap="onPic"
       >
-      <image class="item-img" src="{{item.src}}"/>
+      <image class="item-img" mode="aspectFill" src="{{item.src}}"/>
       <p class="cn">{{item.cn}}</p>
       <p class="en">{{item.en}}</p>
     </div>

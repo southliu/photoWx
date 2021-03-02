@@ -5,9 +5,11 @@
       wx:for="{{travel}}"
       wx:key="{{index}}"
       data-index="{{index}}"
+      mode="aspectFill"
+      data-values="{{item}}"
       bindtap="onPic"
-      >
-      <image class="item-img" src="{{item.src}}"/>
+    >
+      <image class="item-img" src="{{item.src}}" mode="aspectFill"/>
       <p class="cn">{{item.cn}}</p>
       <p class="en">{{item.en}}</p>
     </div>

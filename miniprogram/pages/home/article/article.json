@@ -3,7 +3,6 @@
   "usingComponents": {
     "common-nav": "../../../components/nav/nav",
     "common-title": "../../../components/title/title",
-    "common-bottom": "../../../components/bottom/bottom",
-    "article-photos": "./components/photos/photos"
+    "common-bottom": "../../../components/bottom/bottom"
   }
 }
