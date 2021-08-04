@@ -1,9 +1,9 @@
 <!--pages/personal/edit/edit.wxml-->
 <view class="edit">
-  <view class="item-box">
+  <!-- view class="item-box">
     <text class="title">{{avatarText}}</text>
     <input class="item-input" type="text" />
-  </view>
+  </view -->
 
   <view class="item-box">
     <text class="title">{{nameText}}</text>
