@@ -17,7 +17,7 @@ Component({
     title: '全球客片',
     travel: [
       {
-        cn: '暗黑萝莉塔',
+        cn: '萝莉塔风',
         en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
         src: 'cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/lolita/01.jpg',
         picList: [

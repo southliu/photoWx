@@ -64,26 +64,14 @@ Component({
       }
     ],
     travel: [
-      // {
-      //   cn: '暗黑萝莉塔',
-      //   en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-      //   src: 'http://173.242.123.141/images/lolita/01.jpg',
-      //   picList: [
-      //     `http://173.242.123.141/images/lolita/02.jpg`,
-      //     `http://173.242.123.141/images/lolita/04.jpg`,
-      //     `http://173.242.123.141/images/lolita/05.jpg`,
-      //   ]
-      // },
       {
-        cn: '朋克系列',
+        cn: '暗黑萝莉塔',
         en: 'JOURNEY VISION WEDDING PHOTOGRAPHY',
-        src: `cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/punk/01.jpg`,
+        src: 'http://173.242.123.141/images/lolita/01.jpg',
         picList: [
-          `cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/punk/02.jpg`,
-          `cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/punk/03.jpg`,
-          `cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/punk/04.jpg`,
-          `cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/punk/05.jpg`,
-          `cloud://south-fx2wm.736f-south-fx2wm-1257138110/images/punk/06.jpg`,
+          `http://173.242.123.141/images/lolita/02.jpg`,
+          `http://173.242.123.141/images/lolita/04.jpg`,
+          `http://173.242.123.141/images/lolita/05.jpg`,
         ]
       }, {
         cn: '冬日古风',
